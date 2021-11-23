@@ -7,11 +7,14 @@
 
 {%block content %}
     <h1>Главная страница</h1>
+    <a href="{% url 'filter' sort=1 %}"><button>От нового к старому</button></a>
+    <a href="{% url 'filter' sort=2 %}"><button>От старого к новому</button></a>
     {% if  task %}
         {% for el in task %}
             <div class="alert alert-warning mt-2">
                 <h3>{{el.title}}</h3>
                 <h3>{{el.task}}</h3>
+                <h3>{{el.time}}</h3>
             </div>
         {% endfor%}
     {% else %}

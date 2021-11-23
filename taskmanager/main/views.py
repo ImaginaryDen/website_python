@@ -27,3 +27,10 @@ def create(request):
         'error': error
     }
     return render(request, 'main/create.html', context)
+
+
+def sort_func(request, sort=1):
+    if sort != 1:
+        sort = -1
+    tasks = Task.objects.order_by('time')[::sort]
+    return render(request, 'main/index.html', {'title': 'Главная страница сайта', 'task': tasks})
