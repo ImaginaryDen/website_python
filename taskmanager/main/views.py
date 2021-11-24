@@ -34,3 +34,9 @@ def sort_func(request, sort=1):
         sort = -1
     tasks = Task.objects.order_by('time')[::sort]
     return render(request, 'main/index.html', {'title': 'Главная страница сайта', 'task': tasks})
+
+
+def post(request, item_id):
+    items = Task.objects.all()
+    item = [x for x in items if x.id == item_id]
+    return render(request, 'main/post.html', {'title': 'Пост', 'item': item[0]})
